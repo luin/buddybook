@@ -5,3 +5,6 @@ Please use the git pre-commit hook supplied in the root directory of this projec
 
 	cp pre-commit .git/hooks
 
+## Deploy
+Just push the commits to the remote server: `git@xj:buddybooks.git`，and the code will be auto deploy.
+
