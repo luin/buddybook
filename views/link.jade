@@ -1,0 +1,23 @@
+!!!
+html
+  head
+    meta(name="viewport", content="width=device-width")
+    meta(name="apple-itunes-app", content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL")
+  body
+    a#applink1(href="buddybook:link?bookUniqueID=#{accountId}") 请安装应用后重新点此
+    script(type="text/javascript")
+      var appstorefail = "itms-apps://itunes.apple.com/us/app/facebook/id284882215?mt=8&uo=6";
+
+      function applink(fail){
+          return function(){
+              var clickedAt = +new Date;
+              setTimeout(function(){
+                  if (+new Date - clickedAt < 500){
+                      window.location = fail;
+                  }
+              }, 50);
+          };
+      }
+
+      document.getElementById("applink1").onclick = applink(appstorefail);
+      document.getElementById("applink1").click();
