@@ -107,8 +107,7 @@ exports.deleteDeal = function (req, res, next) {
 exports.getBookList = function (req, res) {
   Book.find({$or: [{owner: req.user.uniqueID}, {participant: req.user.uniqueID}]}, function (err, docs) {
     res.json({books: docs.map(function (doc) {
-      return false;
-      //return doc.fetch(req.user);
+      return doc.fetch(req.user);
     })});
   });
 };

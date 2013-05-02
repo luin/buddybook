@@ -1,0 +1,12 @@
+#!/bin/sh
+echo "Running Tests..."
+git stash -q --keep-index
+
+# Test prospective commit
+npm test
+RESULT=$?
+git stash pop -q
+[ $RESULT -ne 0 ] && exit 1
+echo "Passed :)"
+exit 0
+
